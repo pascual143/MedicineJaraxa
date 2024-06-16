@@ -1,5 +1,5 @@
 import { useState } from "react"
-// import "./App.css"
+import "./App.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from './components/layout/Home'
 import HeaderNav from "./components/layout/HeaderNav"
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <div className="">
+      <div className="body">
         <BrowserRouter>
           {/* <ScrollToTop> */}
             <HeaderNav />
