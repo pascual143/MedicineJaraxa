@@ -22,6 +22,7 @@ Valoraremos:
   - MaterialUI
   - Docker???
   - testing?
+  - Prettier y ESLint
 
 # OTROS
   - Se añaden proptypes para mejorar el prototipado
@@ -30,7 +31,7 @@ Valoraremos:
 
 # Pasos a seguir
   1) Instalación de dependencias y primer git
-    + Vite(con React)
-    + Docker
-    + MaterialUI
+    - Vite + React
+    - Docker 
+    - MaterialUI
   2) 
