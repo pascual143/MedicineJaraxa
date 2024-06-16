@@ -33,8 +33,10 @@ Valoraremos:
 
 # Pasos a seguir
   1) Instalación de dependencias y primer git
-    - Vite + React
+    - Vite + React (react-router-dom)
     - Docker 
-    - MaterialUI
+    - MaterialUI, icons-material
     - Prettier y ESLint
-  2) 
+  2) Creación y primeros pasos del Layout
+    - Home, Header(navBar) y footer
+    - Añadir primeras rutas 
