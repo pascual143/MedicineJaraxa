@@ -28,11 +28,13 @@ Valoraremos:
   - Se añaden proptypes para mejorar el prototipado
 
 # NOTAS
+    - No se han utilizado herramientas de Inteligencia Artifial. Se han aplicado conocimientos propios, ejemplos de proyectos personales anteriores, documentación, devdocs.io, dev.to, stackoverflow
+    
 
 # Pasos a seguir
   1) Instalación de dependencias y primer git
     - Vite + React
     - Docker 
     - MaterialUI
-    - Prettier
+    - Prettier y ESLint
   2) 
