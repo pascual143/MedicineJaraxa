@@ -34,4 +34,5 @@ Valoraremos:
     - Vite + React
     - Docker 
     - MaterialUI
+    - Prettier
   2) 
