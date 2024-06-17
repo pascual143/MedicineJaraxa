@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material"
 
 const Footer = () => {
   return (
@@ -7,21 +7,23 @@ const Footer = () => {
       sx={{
         width: "100%",
         height: "auto",
-        backgroundColor: "secondary.main",
+        backgroundColor: "var(--fith-color)",
         paddingTop: "1rem",
         paddingBottom: "1rem",
+        position: "absolute",
+        bottom: "0",
       }}
     >
       <Container maxWidth="lg">
         <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
             <Typography color="black" variant="h5">
-              React Starter App
+              Jaraxa
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography color="textSecondary" variant="subtitle1">
-              {`${new Date().getFullYear()} | React | Material UI | React Router`}
+              {`${new Date().getFullYear()} | React | Material UI | Pascual Vila`}
             </Typography>
           </Grid>
         </Grid>
