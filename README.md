@@ -19,8 +19,9 @@ Valoraremos:
   - Vite
   - HTML
   - CSS
+  - Axios
   - MaterialUI
-  - Docker???
+  - Docker
   - testing?
   - Prettier y ESLint
 
@@ -40,3 +41,7 @@ Valoraremos:
   2) Creación y primeros pasos del Layout
     - Home, Header(navBar) y footer
     - Añadir primeras rutas 
+  3) Creación del componente de Búsqueda(Search)
+    - Comprobación de datos de la Api en Postman
+    - Instalación de axios
+    - Creación del componente

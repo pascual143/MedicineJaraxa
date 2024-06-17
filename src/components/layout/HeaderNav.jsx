@@ -32,6 +32,7 @@ const HeaderNav = () => {
               },
             }}
           >
+            {/* Box de busqueda */}
             <Box
               sx={{
                 padding: "0 16px",
@@ -43,6 +44,7 @@ const HeaderNav = () => {
               }}
             >
               <SearchIcon />
+              {/* componente de busqueda */}
             </Box>
             <InputBase
               placeholder="Buscar…"
