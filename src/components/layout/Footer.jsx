@@ -5,13 +5,10 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        width: "100%",
         height: "auto",
         backgroundColor: "var(--fith-color)",
         paddingTop: "1rem",
         paddingBottom: "1rem",
-        position: "absolute",
-        bottom: "0",
       }}
     >
       <Container maxWidth="lg">
