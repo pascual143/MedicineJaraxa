@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
@@ -9,6 +10,7 @@ import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import Grid from "@mui/material/Grid"
 import Pagination from "@mui/material/Pagination"
+import { fetchDataCard } from "../../utils/utils"
 
 const MedicineCard = () => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -16,42 +18,27 @@ const MedicineCard = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [page, setPage] = useState(1)
-  const [resultsPerPage] = useState(8) // Number of results per page
+  const [resultsPerPage] = useState(8)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      setError("")
-      try {
-        const response = await fetch(
-          `https://api.fda.gov/drug/drugsfda.json?count=products.route.exact`
-        )
-        const responseJson = await response.json()
-        setData(responseJson.results)
-      } catch (error) {
-        console.error("Error fetching data: ", error)
-        setError(error.message || "Something went wrong while fetching data")
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchData()
+  // Fetch url en utils.js
+  useEffect((url) => {
+    fetchDataCard(url, setLoading, setError, setData)
   }, [])
 
+  // Buscador
   const filteredData = data.filter((item) =>
     item.term.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value)
-    setPage(1) // Reset to the first page on search
+    setPage(1)
   }
 
-  // Calculate the number of pages
+  // calcular el numero de paginas
   const pageCount = Math.ceil(filteredData.length / resultsPerPage)
 
-  // Get the current page's data
+  // Obener resultados de la pagina anterior
   const paginatedData = filteredData.slice(
     (page - 1) * resultsPerPage,
     page * resultsPerPage
@@ -69,7 +56,7 @@ const MedicineCard = () => {
         alignItems: "center",
         minHeight: "100vh",
         padding: "2rem",
-        backgroundColor: "#f5f5f5"
+        backgroundColor: "#f5f5f5",
       }}
     >
       <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
@@ -89,7 +76,7 @@ const MedicineCard = () => {
         value={searchTerm}
         onChange={handleSearchChange}
       />
-      <Card sx={{ width: "100%", maxWidth: "1200px", margin: "20px"}}>
+      <Card sx={{ width: "100%", maxWidth: "1200px", margin: "20px" }}>
         <CardContent sx={{ margin: "40px" }}>
           {loading ? (
             <Box display="flex" justifyContent="center" mt={2}>
@@ -101,7 +88,7 @@ const MedicineCard = () => {
             </Typography>
           ) : paginatedData && paginatedData.length > 0 ? (
             <>
-              <Grid container spacing={2} >
+              <Grid container spacing={2}>
                 {paginatedData.map((item, index) => (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                     <Card
@@ -150,5 +137,9 @@ const MedicineCard = () => {
   )
 }
 
+//Proptypes
+MedicineCard.propTypes = {
+  fetchDataCard: PropTypes.func.isRequired,
+}
+
 export default MedicineCard
-4

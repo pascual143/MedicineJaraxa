@@ -5,7 +5,15 @@ import CircularProgress from "@mui/material/CircularProgress"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import Divider from "@mui/material/Divider"
-import { Card, Grid } from "@mui/material"
+import {
+  Card,
+  Grid,
+  TableHead,
+  TableCell,
+  TableRow,
+  Table,
+} from "@mui/material"
+import { fetchDataDetails } from "../../utils/utils"
 
 const MedicineCardDetail = () => {
   const { term } = useParams()
@@ -13,66 +21,46 @@ const MedicineCardDetail = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
+  // Fetch en utils.js
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      setError("")
-      try {
-        const url = `https://api.fda.gov/drug/drugsfda.json?search=products.route.exact:"${term}"`
-        const response = await fetch(url)
-        const responseJson = await response.json()
-        if (responseJson.results && responseJson.results.length > 0) {
-          setData(responseJson.results[0])
-        } else {
-          setData(null)
-        }
-      } catch (error) {
-        console.error("Error fetching data: ", error)
-        setError(error.message || "Something went wrong while fetching data")
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchData()
+    fetchDataDetails(term, setLoading, setError, setData)
   }, [term])
 
-  // Mostrar todos los resultados del medicamento
-
+  // Iterar todos los resultados
   const renderDetails = (data) => {
     return Object.keys(data).map((key, index) => {
       const value = data[key]
       if (typeof value === "object" && value !== null) {
         return (
-          <Box key={index} sx={{ mb: 2 }}>
-            <Card variant="outlined">
-              <Box sx={{ p: 2, px: "5rem" }}>
-                <Typography
+          <Table stickyHeader key={index} sx={{ mb: 2 }}>
+            <TableHead variant="outlined">
+              <TableRow sx={{ p: 2, px: "5rem" }}>
+                <TableCell
                   variant="subtitle1"
                   fontFamily="Helvetica"
                   sx={{
-                    mx: "5rem",
-                    px: "5rem",
+                    mx: "0.3rem",
+                    px: "0.3rem",
                     fontWeight: "bold",
-                    borderRadius: "100px",
+                    borderRadius: "20px",
                     backgroundColor: "var(--fith-color)",
                     fontSize: "1.3em",
                   }}
                 >
                   {convertKeyToTitle(key)}
-                </Typography>
+                </TableCell>
                 <Divider sx={{ my: 1 }} />
-                <Box sx={{ ml: 2 }}>{renderDetails(value)}</Box>
-              </Box>
-            </Card>
-          </Box>
+                <Box sx={{ ml: 2, mt: 1 }}>{renderDetails(value)}</Box>
+              </TableRow>
+            </TableHead>
+          </Table>
         )
       }
       return (
         <Box key={index} sx={{ mb: 2, mx: "5rem" }}>
           <Card>
             <Box sx={{ p: 2 }}>
-              <Typography sx={{fontFamily:"Roboto"}}>
+              <Typography sx={{ fontFamily: "Roboto" }}>
                 <strong>{convertKeyToTitle(key)}:</strong> {value}
               </Typography>
             </Box>
@@ -82,6 +70,7 @@ const MedicineCardDetail = () => {
     })
   }
 
+  // Traduccion
   const convertKeyToTitle = (key) => {
     switch (key) {
       case "submissions":
@@ -121,9 +110,9 @@ const MedicineCardDetail = () => {
       case "strength":
         return "Fuerza"
       case "name":
-        return "nombre"
+        return "Nombre"
       case "route":
-        return "ruta"
+        return "Ruta"
       case "application_number":
         return "Número de Aplicación"
       case "sponsor_name":
@@ -135,13 +124,13 @@ const MedicineCardDetail = () => {
       case "manufacturer_name":
         return "Nombre del Fabricante"
       case "product_ndc":
-        return "Producto ndc"
+        return "Producto NDC"
       case "product_type":
         return "Tipo de Producto"
       case "substance_name":
         return "Nombre de la Sustancia"
       case "package_ndc":
-        return "Paquete ndc"
+        return "Paquete NDC"
       case "product_number":
         return "Número de Producto"
       case "reference_drug":
@@ -184,7 +173,17 @@ const MedicineCardDetail = () => {
               flexDirection: "column",
             }}
           >
-            <Typography variant="h5" fontFamily="Roboto" sx={{ marginBottom: 2 }}>
+            <Typography
+              variant="h5"
+              fontFamily="Roboto"
+              sx={{
+                marginBottom: 2,
+                py: 1,
+                pl: "5rem",
+                borderRadius: "100px",
+                backgroundColor: "var(--fith-color)",
+              }}
+            >
               Detalles para {term}
             </Typography>
             <Divider sx={{ mb: 2 }} />
@@ -200,6 +199,7 @@ const MedicineCardDetail = () => {
   )
 }
 
+//Proptypes
 MedicineCardDetail.propTypes = {
   data: PropTypes.object,
   loading: PropTypes.bool,

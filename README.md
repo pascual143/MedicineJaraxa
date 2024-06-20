@@ -29,19 +29,33 @@ Valoraremos:
   - Se añaden proptypes para mejorar el prototipado
 
 # NOTAS
-    - No se han utilizado herramientas de Inteligencia Artifial. Se han aplicado conocimientos propios, ejemplos de proyectos personales anteriores, documentación, devdocs.io, dev.to, stackoverflow
+    - Los colores provienen de paletas dedicadas a la medicina
     
 
 # Pasos a seguir
-  1) Instalación de dependencias y primer git
+
+  1) Instalación de dependencias y primer git:
     - Vite + React (react-router-dom)
     - Docker 
     - MaterialUI, icons-material
     - Prettier y ESLint
-  2) Creación y primeros pasos del Layout
+
+  2) Creación y primeros pasos del Layout:
     - Home, Header(navBar) y footer
     - Añadir primeras rutas 
-  3) Creación del componente de Búsqueda(Search)
+
+  3) Creación del componente Lista y lógica de búsqueda:
     - Comprobación de datos de la Api en Postman
     - Instalación de axios
     - Creación del componente
+
+  4) Creación de componente detalle:
+    - Listas los objetos resultado en el componente
+    - Estilizarlos
+
+  5) Estilizar Home 
+
+  6) Proptypes
+
+  7) Pruebas unitarias con Jest???
+
