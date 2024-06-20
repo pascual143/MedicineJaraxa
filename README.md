@@ -22,7 +22,6 @@ Valoraremos:
   - Axios
   - MaterialUI
   - Docker
-  - testing?
   - Prettier y ESLint
 
 # OTROS
@@ -56,8 +55,6 @@ Valoraremos:
   5) Estilizar Home 
 
   6) Proptypes
-
-  7) Pruebas unitarias con Jest???
 
   8) Deploy
 
