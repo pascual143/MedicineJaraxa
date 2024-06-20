@@ -3,18 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://pascual143.github.io/medicinejaraxa",      
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
-    "start": "vite",
-    "lint": "eslint . --fix --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "format": "npx prettier --write",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
+  "homepage": "http://pascual143.github.io/medicineJaraxa",
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "serve": "vite preview",
+  "start": "vite",
+  "lint": "eslint . --fix --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+  "format": "npx prettier --write",
+  "preview": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+},
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
