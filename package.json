@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://pascual143.github.io/medicineJaraxa",
+  "homepage": "http://pascual143.github.io/medicineJaraxa/",
   "scripts": {
   "dev": "vite",
   "build": "vite build",
