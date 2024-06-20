@@ -2,7 +2,7 @@
 # PROYECTO PRUEBA PARA JARAXA
 
 # Instalacion 
-  1) npm instal
+  1) npm install
   2) npm run start
 
 # CARACTERÍSTICAS
