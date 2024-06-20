@@ -1,6 +1,8 @@
 
 # PROYECTO PRUEBA PARA JARAXA
 
+# Instalacion 1) npm instal  2) npm run start
+
 # CARACTERÍSTICAS
 
   - Debe haber un campo de búsqueda para introducir el texto.
