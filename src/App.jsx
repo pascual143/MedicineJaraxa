@@ -1,11 +1,12 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/layout/Home";
-import HeaderNav from "./components/layout/HeaderNav";
-import Footer from "./components/layout/Footer";
-import MedicineCard from "./components/card/MedicineCard";
-import MedicineCardDetail from "./components/card/MedicineCardDetail"; // Import the new component
+import React from "react"
+import "./App.css"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from "./components/layout/Home"
+import HeaderNav from "./components/layout/HeaderNav"
+import Footer from "./components/layout/Footer"
+import MedicineCard from "./components/card/MedicineCard"
+import MedicineCardDetail from "./components/card/MedicineCardDetail"
+import Info from "./components/card/Info"
 
 function App() {
   return (
@@ -13,12 +14,13 @@ function App() {
       <HeaderNav />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/info" element={<Info />} />
         <Route path="/medications" element={<MedicineCard />} />
-        <Route path="/medications/:term" element={<MedicineCardDetail />} /> {/* Add the new route */}
+        <Route path="/medications/:term" element={<MedicineCardDetail />} />
       </Routes>
       <Footer />
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

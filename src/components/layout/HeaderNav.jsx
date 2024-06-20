@@ -41,6 +41,7 @@ const HeaderNav = () => {
                 <InfoIcon sx={{ mr: 0.5 }} fontSize="inherit" />
                 <Typography color="text.primary">Info App</Typography>
               </Link>
+              
             </Breadcrumbs>
           </Box>
         </Toolbar>
