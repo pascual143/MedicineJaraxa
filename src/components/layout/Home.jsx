@@ -60,15 +60,15 @@ const Home = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Box sx={{ position: "relative" }}>
-            <Box
+            {/* <Box
               sx={{
                 position: "absolute",
-                width: "150px",
-                height: "150px",
+                width: "130px",
+                height: "130px",
                 borderRadius: "35%  60%  30% 50%",
                 backgroundColor: "var(--six-color)",
-                top: "-120px",
-                left: "-50px",
+                bottom: "-80px",
+                left: "20px",
                 zIndex: -1,
                 transition: "all 0.3s ease",
               }}
@@ -76,16 +76,16 @@ const Home = () => {
             <Box
               sx={{
                 position: "absolute",
-                width: "100px",
-                height: "100px",
+                width: "80px",
+                height: "80px",
                 borderRadius: "50% 40% 50% 40%",
                 backgroundColor: "var(--second-color)",
-                bottom: "-30px",
+                bottom: "80px",
                 right: "12px",
                 zIndex: -1,
                 transition: "all 0.3s ease",
               }}
-            />
+            /> */}
             <Link to="/medications">
               <Button
                 className="button"
