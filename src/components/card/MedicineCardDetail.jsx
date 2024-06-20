@@ -32,15 +32,13 @@ const MedicineCardDetail = () => {
       const value = data[key]
       if (typeof value === "object" && value !== null) {
         return (
-          <Table stickyHeader key={index} sx={{ mb: 2 }}>
+          <Table key={index} sx={{ mb: 2 }}>
             <TableHead variant="outlined">
-              <TableRow sx={{ p: 2, px: "5rem" }}>
+              <TableRow>
                 <TableCell
                   variant="subtitle1"
                   fontFamily="Helvetica"
                   sx={{
-                    mx: "0.3rem",
-                    px: "0.3rem",
                     fontWeight: "bold",
                     borderRadius: "20px",
                     backgroundColor: "var(--fith-color)",
@@ -179,7 +177,7 @@ const MedicineCardDetail = () => {
               sx={{
                 marginBottom: 2,
                 py: 1,
-                pl: "5rem",
+                pl: "1rem",
                 borderRadius: "100px",
                 backgroundColor: "var(--fith-color)",
               }}

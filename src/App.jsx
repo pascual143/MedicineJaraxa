@@ -18,7 +18,7 @@ function App() {
         <Route path="/medications" element={<MedicineCard />} />
         <Route path="/medications/:term" element={<MedicineCardDetail />} />
       </Routes>
-      <Footer />
+      <Footer sx={{  position: "fixed",  width: "100%",  bottom: "0"}}/>
     </Router>
   )
 }

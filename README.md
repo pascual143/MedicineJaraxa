@@ -59,3 +59,5 @@ Valoraremos:
 
   7) Pruebas unitarias con Jest???
 
+  8) Deploy
+
