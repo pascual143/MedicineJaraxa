@@ -62,3 +62,6 @@ Valoraremos:
 
   8) Deploy
 
+![Captura de pantalla 2024-06-20 222217](https://github.com/pascual143/medicineJaraxa/assets/46532433/44da822f-bd1f-4ce2-90f8-d8b559988da6)
+![Captura de pantalla 2024-06-20 222233](https://github.com/pascual143/medicineJaraxa/assets/46532433/03686ea8-a6d1-4c6e-a4d1-78d60017143a)
+![Captura de pantalla 2024-06-20 222250](https://github.com/pascual143/medicineJaraxa/assets/46532433/dd05567a-0f76-466d-a9b5-3dc2b98dd457)
