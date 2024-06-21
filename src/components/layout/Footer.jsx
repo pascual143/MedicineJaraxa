@@ -9,6 +9,8 @@ const Footer = () => {
         backgroundColor: "var(--fith-color)",
         paddingTop: "1rem",
         paddingBottom: "1rem",
+        position: "inherit",
+        bottom:"0px"
       }}
     >
       <Container maxWidth="lg">
