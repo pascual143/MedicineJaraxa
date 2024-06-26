@@ -1,52 +1,50 @@
-import React, { useState, useEffect } from "react"
-import PropTypes from "prop-types"
-import { Link } from "react-router-dom"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import Button from "@mui/material/Button"
-import CircularProgress from "@mui/material/CircularProgress"
-import Typography from "@mui/material/Typography"
-import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
-import Grid from "@mui/material/Grid"
-import Pagination from "@mui/material/Pagination"
-import { fetchDataCard } from "../../utils/utils"
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Pagination from "@mui/material/Pagination";
+import { fetchDataCard } from "../../utils/utils";
 
 const MedicineCard = () => {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
-  const [page, setPage] = useState(1)
-  const [resultsPerPage] = useState(8)
+  const [searchTerm, setSearchTerm] = useState("");
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const [resultsPerPage] = useState(8);
 
-  // Fetch url en utils.js
-  useEffect((url) => {
-    fetchDataCard(url, setLoading, setError, setData)
-  }, [])
+  useEffect(() => {
+    fetchDataCard(setLoading, setError, setData);
+  }, []);
 
-  // Buscador
   const filteredData = data.filter((item) =>
-    item.term.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+    item.products.some((product) =>
+      product.brand_name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value)
-    setPage(1)
-  }
+    setSearchTerm(event.target.value);
+    setPage(1);
+  };
 
-  // calcular el numero de paginas
-  const pageCount = Math.ceil(filteredData.length / resultsPerPage)
+  const pageCount = Math.ceil(filteredData.length / resultsPerPage);
 
-  // Obener resultados de la pagina anterior
   const paginatedData = filteredData.slice(
     (page - 1) * resultsPerPage,
     page * resultsPerPage
-  )
+  );
 
   const handlePageChange = (event, value) => {
-    setPage(value)
-  }
+    setPage(value);
+  };
 
   return (
     <Box
@@ -63,15 +61,12 @@ const MedicineCard = () => {
         Buscador de Medicinas
       </Typography>
       <TextField
-        label="Buscar..."
+        label="Buscar por nombre comercial..."
         variant="outlined"
         sx={{
           marginBottom: "2rem",
           width: "100%",
           maxWidth: "600px",
-          "&:hover": {
-            background: "var(--fith-color)",
-          },
         }}
         value={searchTerm}
         onChange={handleSearchChange}
@@ -103,14 +98,14 @@ const MedicineCard = () => {
                       }}
                     >
                       <CardContent>
-                        <Typography variant="h6">{item.term}</Typography>
-                        <Typography>Número: {item.count}</Typography>
+                        <Typography variant="h6">{item.products[0].brand_name}</Typography>
+                        <Typography>Número: {item.products[0].product_number}</Typography>
                       </CardContent>
                       <Button
                         variant="contained"
                         color="primary"
                         component={Link}
-                        to={`/medications/${item.term}`}
+                        to={`/medications/${item.products[0].product_number}`}
                         sx={{ marginTop: "10px" }}
                       >
                         + Info
@@ -134,12 +129,12 @@ const MedicineCard = () => {
         </CardContent>
       </Card>
     </Box>
-  )
-}
+  );
+};
 
-//Proptypes
+// PropTypes
 MedicineCard.propTypes = {
   fetchDataCard: PropTypes.func.isRequired,
-}
+};
 
-export default MedicineCard
+export default MedicineCard;
