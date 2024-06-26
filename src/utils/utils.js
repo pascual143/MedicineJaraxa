@@ -4,7 +4,7 @@ export const fetchDataDetails = async (term, setLoading, setError, setData) => {
     setLoading(true);
     setError("");
     try {
-        const url = `https://api.fda.gov/drug/drugsfda.json?search=products.route.exact:"${term}"`;
+        const url = `https://api.fda.gov/drug/drugsfda.json?search=products.brand_name:"${term}"`;
         const response = await fetch(url);
         const responseJson = await response.json();
         if (responseJson.results && responseJson.results.length > 0) {
