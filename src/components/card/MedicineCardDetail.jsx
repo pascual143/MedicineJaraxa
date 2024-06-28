@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react"
-import PropTypes from "prop-types"
-import { useParams } from "react-router-dom"
-import CircularProgress from "@mui/material/CircularProgress"
-import Typography from "@mui/material/Typography"
-import Box from "@mui/material/Box"
-import Divider from "@mui/material/Divider"
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import {
   Card,
   Grid,
@@ -12,24 +12,22 @@ import {
   TableCell,
   TableRow,
   Table,
-} from "@mui/material"
-import { fetchDataDetails } from "../../utils/utils"
+} from "@mui/material";
+import { fetchDataDetails } from "../../utils/utils";
 
 const MedicineCardDetail = () => {
-  const { term } = useParams()
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  const { term } = useParams();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // Fetch en utils.js
   useEffect(() => {
-    fetchDataDetails(term, setLoading, setError, setData)
-  }, [term])
+    fetchDataDetails(term, setLoading, setError, setData);
+  }, [term]);
 
-  // Iterar todos los resultados
   const renderDetails = (data) => {
     return Object.keys(data).map((key, index) => {
-      const value = data[key]
+      const value = data[key];
       if (typeof value === "object" && value !== null) {
         return (
           <Table key={index} sx={{ mb: 2 }}>
@@ -52,7 +50,7 @@ const MedicineCardDetail = () => {
               </TableRow>
             </TableHead>
           </Table>
-        )
+        );
       }
       return (
         <Box key={index} sx={{ mb: 2, mx: "5rem" }}>
@@ -64,81 +62,47 @@ const MedicineCardDetail = () => {
             </Box>
           </Card>
         </Box>
-      )
-    })
-  }
+      );
+    });
+  };
 
-  // Traduccion
   const convertKeyToTitle = (key) => {
-    switch (key) {
-      case "submissions":
-        return "Envíos"
-      case "submission_type":
-        return "Tipo de envío"
-      case "submission_number":
-        return "Número de envío"
-      case "submission_status":
-        return "Estado del envío"
-      case "submission_status_date":
-        return "Fecha de Estado de Envío"
-      case "submission_class_code":
-        return "Código de Clase de Envío"
-      case "submission_class_code_description":
-        return "Descripción Código Clase de Envío"
-      case "id":
-        return "Identificador"
-      case "url":
-        return "URL"
-      case "date":
-        return "Fecha"
-      case "type":
-        return "Tipo"
-      case "label":
-        return "Etiqueta"
-      case "review_priority":
-        return "Prioridad de Revisión"
-      case "reference_standard":
-        return "Referencia Standard"
-      case "dosage_form":
-        return "Forma de la Dosis"
-      case "marketing_status":
-        return "Estado Marketing"
-      case "te_code":
-        return "Código te"
-      case "strength":
-        return "Fuerza"
-      case "name":
-        return "Nombre"
-      case "route":
-        return "Ruta"
-      case "application_number":
-        return "Número de Aplicación"
-      case "sponsor_name":
-        return "Nombre del Sponsor"
-      case "brand_name":
-        return "Nombre de la Marca"
-      case "generic_name":
-        return "Nombre Genérico"
-      case "manufacturer_name":
-        return "Nombre del Fabricante"
-      case "product_ndc":
-        return "Producto NDC"
-      case "product_type":
-        return "Tipo de Producto"
-      case "substance_name":
-        return "Nombre de la Sustancia"
-      case "package_ndc":
-        return "Paquete NDC"
-      case "product_number":
-        return "Número de Producto"
-      case "reference_drug":
-        return "Referencia del Medicamento"
-      case "active_ingredients":
-        return "Ingrediente Activo"
-      default:
-        return key
-    }
-  }
+    const translations = {
+      submissions: "Envíos",
+      submission_type: "Tipo de envío",
+      submission_number: "Número de envío",
+      submission_status: "Estado del envío",
+      submission_status_date: "Fecha de Estado de Envío",
+      submission_class_code: "Código de Clase de Envío",
+      submission_class_code_description: "Descripción Código Clase de Envío",
+      id: "Identificador",
+      url: "URL",
+      date: "Fecha",
+      type: "Tipo",
+      label: "Etiqueta",
+      review_priority: "Prioridad de Revisión",
+      reference_standard: "Referencia Standard",
+      dosage_form: "Forma de la Dosis",
+      marketing_status: "Estado Marketing",
+      te_code: "Código te",
+      strength: "Fuerza",
+      name: "Nombre",
+      route: "Ruta",
+      application_number: "Número de Aplicación",
+      sponsor_name: "Nombre del Sponsor",
+      brand_name: "Nombre de la Marca",
+      generic_name: "Nombre Genérico",
+      manufacturer_name: "Nombre del Fabricante",
+      product_ndc: "Producto NDC",
+      product_type: "Tipo de Producto",
+      substance_name: "Nombre de la Sustancia",
+      package_ndc: "Paquete NDC",
+      product_number: "Número de Producto",
+      reference_drug: "Referencia del Medicamento",
+      active_ingredients: "Ingrediente Activo",
+    };
+    return translations[key] || key;
+  };
 
   return (
     <Box>
@@ -194,14 +158,13 @@ const MedicineCardDetail = () => {
         </Card>
       )}
     </Box>
-  )
-}
+  );
+};
 
-//Proptypes
 MedicineCardDetail.propTypes = {
   data: PropTypes.object,
   loading: PropTypes.bool,
   error: PropTypes.string,
-}
+};
 
-export default MedicineCardDetail
+export default MedicineCardDetail;

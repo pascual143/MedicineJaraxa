@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -25,9 +24,7 @@ const MedicineCard = () => {
   }, []);
 
   const filteredData = data.filter((item) =>
-    item.products.some((product) =>
-      product.brand_name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    item.term.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleSearchChange = (event) => {
@@ -61,7 +58,7 @@ const MedicineCard = () => {
         Buscador de Medicinas
       </Typography>
       <TextField
-        label="Buscar por nombre comercial..."
+        label="Buscar..."
         variant="outlined"
         sx={{
           marginBottom: "2rem",
@@ -98,14 +95,14 @@ const MedicineCard = () => {
                       }}
                     >
                       <CardContent>
-                        <Typography variant="h6">{item.products[0].brand_name}</Typography>
-                        <Typography>Número: {item.products[0].product_number}</Typography>
+                        <Typography variant="h6">{item.term}</Typography>
+                        <Typography>Número: {item.count}</Typography>
                       </CardContent>
                       <Button
                         variant="contained"
                         color="primary"
                         component={Link}
-                        to={`/medications/${item.products[0].product_number}`}
+                        to={`/medications/${item.term}`}
                         sx={{ marginTop: "10px" }}
                       >
                         + Info
@@ -130,11 +127,6 @@ const MedicineCard = () => {
       </Card>
     </Box>
   );
-};
-
-// PropTypes
-MedicineCard.propTypes = {
-  fetchDataCard: PropTypes.func.isRequired,
 };
 
 export default MedicineCard;
